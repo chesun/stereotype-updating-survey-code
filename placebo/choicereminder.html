@@ -1,0 +1,32 @@
+<!-- HTML code for the show/hide instruction button that includes the choice question instructions and reminders for number of odd/even people -->
+<!-- remember to change the button and text ID for different questions -->
+
+<div>&nbsp;
+<p>Click 'Show/hide instructions' if you need to review the instructions and relevant information again.</p>
+
+<p>&nbsp;</p>
+&nbsp; &nbsp;<button aria-controls="collapseInst" aria-expanded="false" class="btn btn-primary" data-target="#collapseInst" data-toggle="collapse" id="button" type="button">&nbsp; &nbsp; Show/hide instructions &nbsp;</button>
+
+<div class="collapse" id="collapseInst" style="line-height: normal;font-size:14px;display:none;">&nbsp;
+<p>&nbsp;</p>
+
+<p>In this question, you will be asked to choose between a list of uncertain options. Specifically, on every line, you will be asked to choose between:</p>
+
+<ul>
+	<li><b>Option A: </b> Earn $4 if the top scorer in the group has an odd ID.</li>
+	<li><b>Option B: </b> Earn $4 if the number on the ball randomly drawn from Basket B is in the ranges indicated on the line.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>Here are some reminders before you make your choices:</p>
+
+<ul>
+	<li>In this group that is paired with you, there are&nbsp;<span style="font-weight: bolder;">${e://Field/numodd}</span>&nbsp;people with an odd participant ID, and&nbsp;<span style="font-weight: bolder;">${e://Field/numeven}</span>&nbsp;people with an even participant ID.</li>
+	<li><span style="text-align: center;">Basket B contains 100 balls numbered 1 to 100. Each number appears in the basket exactly once and all balls are equal likely to be drawn.</span></li>
+</ul>
+&nbsp;
+
+<p>&nbsp;</p>
+</div>
+</div>
