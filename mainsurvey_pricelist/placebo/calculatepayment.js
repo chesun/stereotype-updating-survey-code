@@ -116,7 +116,7 @@ for (let i = 1; i <= 22; i++) {
   }
 }
 
-var totalpayment = 3 + bonusamount
+var totalpayment = 3 + bonusamount;
 
 
 Qualtrics.SurveyEngine.setEmbeddedData("paylisttype", paylisttype);
@@ -232,7 +232,7 @@ for (let i = 1; i <= 14; i++) {
   }
 }
 
-var totalpayment = 3 + bonusamount
+var totalpayment = 3 + bonusamount;
 
 
 Qualtrics.SurveyEngine.setEmbeddedData("paylisttype", paylisttype);
