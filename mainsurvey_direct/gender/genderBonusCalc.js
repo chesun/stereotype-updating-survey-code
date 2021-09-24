@@ -28,32 +28,44 @@ var baseFee = parseInt("${e://Field/baseFee}");
 if (payQuestionNum==1) {
   //if Q1 is selected for payment, trueStateManHigher takes value 1 if top man score is higher than top woman score in Group A
   trueStateManHigher = parseInt("${e://Field/topmanhigher5050}");
-
-
-
-
-} else {
-    if (payQuestionNum==2) {
-      trueStateManHigher = parseInt("${e://Field/avgmanhigher5050}");
-
+    if (randomN <= beliefReports[0]) {
+      //if randomN is smaller or equal to stated belief in the selected question, use event lottery method
+      var earnBonus = (trueStateManHigher == 1) ? 1 : 0; // dummy for whether the subject earns a bonus
+      var bonusAmount = (earnBonus == 1) ? bonusFee : 0; // amount of bonus earned
     } else {
-        trueStateManHigher = parseInt("${e://Field/manhigher}");
-          for (let i=3; i<=9; i++) {
-            if (payQuestionNum==i) {
-              //if randomN is smaller or equal to stated belief in the selected question, use event lottery method
-              if (randomN <= beliefReports[i-1]) {
-                // dummy for whether the subject earns a bonus
-                var earnBonus = (trueStateManHigher == 1) ? 1 : 0;
-                // amount of bonus earned
-                var bonusamount = (earnbonus == 1) ? bonusFee : 0;
-              } else {
-                 //if randomN is larger than stated belief, then use number lottery method to calculate payment
-                 var earnBonus = (numLottRandDraw <= randomN) ? 1 : 0;
-                 var bonusamount = (earnbonus == 1) ? bonusFee : 0;
-              }
-            }
-          }
+      //if randomN is larger than stated belief, then use number lottery method to calculate payment
+      var earnBonus = (numLottRandDraw <= randomN) ? 1 : 0;
+      var bonusAmount = (earnBonus == 1) ? bonusFee : 0;
     }
 
-
+} else {
+      if (payQuestionNum==2) {
+        trueStateManHigher = parseInt("${e://Field/avgmanhigher5050}");
+          if (randomN <= beliefReports[1]) {
+            //if randomN is smaller or equal to stated belief in the selected question, use event lottery method
+            var earnBonus = (trueStateManHigher == 1) ? 1 : 0; // dummy for whether the subject earns a bonus
+            var bonusAmount = (earnBonus == 1) ? bonusFee : 0; // amount of bonus earned
+          } else {
+            //if randomN is larger than stated belief, then use number lottery method to calculate payment
+            var earnBonus = (numLottRandDraw <= randomN) ? 1 : 0;
+            var bonusAmount = (earnBonus == 1) ? bonusFee : 0;
+          }
+      } else {
+          trueStateManHigher = parseInt("${e://Field/manhigher}");
+            for (let i=3; i<=9; i++) {
+              if (payQuestionNum==i) {
+                if (randomN <= beliefReports[i-1]) {
+                  //if randomN is smaller or equal to stated belief in the selected question, use event lottery method
+                  // dummy for whether the subject earns a bonus
+                  var earnBonus = (trueStateManHigher == 1) ? 1 : 0;
+                  // amount of bonus earned
+                  var bonusAmount = (earnBonus == 1) ? bonusFee : 0;
+                } else {
+                   //if randomN is larger than stated belief, then use number lottery method to calculate payment
+                   var earnBonus = (numLottRandDraw <= randomN) ? 1 : 0;
+                   var bonusAmount = (earnBonus == 1) ? bonusFee : 0;
+                }
+              }
+            }
+      }
 }
