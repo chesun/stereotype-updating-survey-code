@@ -19,7 +19,7 @@ beliefReports[8] = parseInt("${e://Field/genderPost6}");
 //randomN is the number between 1 and 100 randomly draw to determine whether to pay using event lottery or number lottery
 //numLottRandDraw is the number between 1 and 100 randomly drawn to play the number lottery
 var payQuestionNum = parseInt("${e://Field/payQuestionNum}");
-var randomN = parseInt("${e://Field/rnadomN}");
+var randomN = parseInt("${e://Field/randomN}");
 var numLottRandDraw = parseInt("${e://Field/numLottRandDraw}");
 var bonusFee = parseInt("${e://Field/bonusFee}");
 var baseFee = parseInt("${e://Field/baseFee}");
@@ -50,7 +50,7 @@ if (payQuestionNum==1) {
       var randomNReportCompare = "greater than";
       var payMethod = "NL"; //payment method is number lottery
       var payMethodText = "Payment on Lottery";
-        if numLottRandDraw <= randomN {
+        if (numLottRandDraw <= randomN) {
           var numLottCompare = "less than or equal to"; //text injection to compare numLottRandDraw and randomN
           var winLottText = "won"; //text injection for whether subject won or did not win the number lottery
         } else {
@@ -84,7 +84,7 @@ if (payQuestionNum==1) {
             var randomNReportCompare = "greater than";
             var payMethod = "NL"; //payment method is number lottery
             var payMethodText = "Payment on Lottery";
-              if numLottRandDraw <= randomN {
+              if (numLottRandDraw <= randomN) {
                 var numLottCompare = "less than or equal to"; //text injection to compare numLottRandDraw and randomN
                 var winLottText = "won"; //text injection for whether subject won or did not win the number lottery
               } else {
@@ -121,7 +121,7 @@ if (payQuestionNum==1) {
                    var randomNReportCompare = "greater than";
                    var payMethod = "NL"; //payment method is number lottery
                    var payMethodText = "Payment on Lottery";
-                     if numLottRandDraw <= randomN {
+                     if (numLottRandDraw <= randomN) {
                        var numLottCompare = "less than or equal to"; //text injection to compare numLottRandDraw and randomN
                        var winLottText = "won"; //text injection for whether subject won or did not win the number lottery
                      } else {
