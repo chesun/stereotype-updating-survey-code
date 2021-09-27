@@ -1,18 +1,18 @@
-//generate embedded data fields needed to show the participant the selected problem and their bonus payment for the Gender Treatment
+//generate embedded data fields needed to show the participant the selected problem and their bonus payment for the ID Treatment
 
 
 //construct an array that contains all of the stated beliefs in the belief elicitation questions.
 //NOTE array index starts at 0, there are 9 elements in this array
 var beliefReports = new Array();
-beliefReports[0] = parseInt("${e://Field/topscoreManHigherGroupA}");
-beliefReports[1] = parseInt("${e://Field/avgscoreManHigherGroupA}");
-beliefReports[2] = parseInt("${e://Field/genderPrior}");
-beliefReports[3] = parseInt("${e://Field/genderPost1}");
-beliefReports[4] = parseInt("${e://Field/genderPost2}");
-beliefReports[5] = parseInt("${e://Field/genderPost3}");
-beliefReports[6] = parseInt("${e://Field/genderPost4}");
-beliefReports[7] = parseInt("${e://Field/genderPost5}");
-beliefReports[8] = parseInt("${e://Field/genderPost6}");
+beliefReports[0] = parseInt("${e://Field/topscoreOddHigherGroupA}");
+beliefReports[1] = parseInt("${e://Field/avgscoreOddHigherGroupA}");
+beliefReports[2] = parseInt("${e://Field/idPrior}");
+beliefReports[3] = parseInt("${e://Field/idPost1}");
+beliefReports[4] = parseInt("${e://Field/idPost2}");
+beliefReports[5] = parseInt("${e://Field/idPost3}");
+beliefReports[6] = parseInt("${e://Field/idPost4}");
+beliefReports[7] = parseInt("${e://Field/idPost5}");
+beliefReports[8] = parseInt("${e://Field/idPost6}");
 
 //parse embedded data needed for calculating payment.
 //payQuestionNum is the question randomly selected for payment
@@ -26,22 +26,22 @@ var baseFee = parseInt("${e://Field/baseFee}");
 
 //payment calculation needs to be made separately for Q1 and Q2 for group A (50/50 group)
 if (payQuestionNum==1) {
-  //if Q1 is selected for payment, trueStateManHigher takes value 1 if top man score is higher than top woman score in Group A
-  trueStateManHigher = parseInt("${e://Field/topmanhigher5050}");
+  //if Q1 is selected for payment, trueStateOddHigher takes value 1 if top scorer has odd ID in Group A
+  trueStateOddHigher = parseInt("${e://Field/topoddhigher5050}");
   var payQuestionBelief = beliefReports[0]; //stated belief in the question
-  var payEventText = "the top scorer in Group A is a man"; //text injection for the event description
+  var payEventText = "the top scorer in Group A has odd ID"; //text injection for the event description
   var payQuestionGroup = "Group A"; //text injection for the group in the question
     if (randomN <= beliefReports[0]) {
       //if randomN is smaller or equal to stated belief in the selected question, use event lottery method
-      var earnBonus = (trueStateManHigher == 1) ? 1 : 0; // dummy for whether the subject earns a bonus
+      var earnBonus = (trueStateOddHigher == 1) ? 1 : 0; // dummy for whether the subject earns a bonus
       var bonusAmountEarned = (earnBonus == 1) ? bonusFee : 0; // amount of bonus earned
       var randomNReportCompare = "less than or equal to"; //text injection for comparison between N and stated belief
       var payMethod = "EL"; //paymnent method, event lottery or number lottery
       var payMethodText = "Payment on Event"; //text injection for payment method
-        if (trueStateManHigher == 1) {
-          var trueEventText = "the top scorer is a man"; //text injection for the true event
+        if (trueStateOddHigher == 1) {
+          var trueEventText = "the top scorer has odd ID"; //text injection for the true event
         } else {
-          var trueEventText = "the top scorer is a woman";
+          var trueEventText = "the top scorer has odd ID";
         }
     } else {
       //if randomN is larger than stated belief, then use number lottery method to calculate payment
@@ -61,21 +61,21 @@ if (payQuestionNum==1) {
 
 } else {
       if (payQuestionNum==2) {
-        trueStateManHigher = parseInt("${e://Field/avgmanhigher5050}");
+        trueStateOddHigher = parseInt("${e://Field/avgoddhigher5050}");
         var payQuestionBelief = beliefReports[1];
-        var payEventText = "the average scoore of the men is higher than the average score of the women in Group A ";
+        var payEventText = "the average scoore of the people with odd ID is higher than the average score of the people with even ID in Group A ";
         var payQuestionGroup = "Group A";
           if (randomN <= beliefReports[1]) {
             //if randomN is smaller or equal to stated belief in the selected question, use event lottery method
-            var earnBonus = (trueStateManHigher == 1) ? 1 : 0; // dummy for whether the subject earns a bonus
+            var earnBonus = (trueStateOddHigher == 1) ? 1 : 0; // dummy for whether the subject earns a bonus
             var bonusAmountEarned = (earnBonus == 1) ? bonusFee : 0; // amount of bonus earned
             var randomNReportCompare = "less than or equal to"; //text injection for comparison between N and stated belief
             var payMethod = "EL"; //paymnent method, event lottery or number lottery
             var payMethodText = "Payment on Event"; //text injection for payment method
-              if (trueStateManHigher == 1) {
-                var trueEventText = "the average score of the men is higher than the average score of the women";
+              if (trueStateOddHigher == 1) {
+                var trueEventText = "the average score of the people with odd ID is higher than the average score of the people with even ID";
               } else {
-                var trueEventText = "the average score of the men is lower than the average score of the women";
+                var trueEventText = "the average score of the people with odd ID is lower than the average score of the people with even ID";
               }
           } else {
             //if randomN is larger than stated belief, then use number lottery method to calculate payment
@@ -94,25 +94,25 @@ if (payQuestionNum==1) {
           }
       } else {
           //For all questions after Q1 and Q2, it's about Group B and top scorer
-          trueStateManHigher = parseInt("${e://Field/manhigher}");
+          trueStateOddHigher = parseInt("${e://Field/oddhigher}");
             for (let i=3; i<=9; i++) {
               if (payQuestionNum==i) {
                 var payQuestionBelief = beliefReports[i-1];
-                var payEventText = "the top scorer in Group B is a man";
+                var payEventText = "the top scorer in Group B has odd ID";
                 var payQuestionGroup = "Group B";
                 if (randomN <= beliefReports[i-1]) {
                   //if randomN is smaller or equal to stated belief in the selected question, use event lottery method
                   // dummy for whether the subject earns a bonus
-                  var earnBonus = (trueStateManHigher == 1) ? 1 : 0;
+                  var earnBonus = (trueStateOddHigher == 1) ? 1 : 0;
                   // amount of bonus earned
                   var bonusAmountEarned = (earnBonus == 1) ? bonusFee : 0;
                   var randomNReportCompare = "less than or equal to"; //text injection for comparison between N and stated belief
                   var payMethod = "EL"; //paymnent method, event lottery or number lottery
                   var payMethodText = "Payment on Event"; //text injection for payment method
-                    if (trueStateManHigher == 1) {
-                      var trueEventText = "the top scorer is a man"; //text injection for the true event
+                    if (trueStateOddHigher == 1) {
+                      var trueEventText = "the top scorer has odd ID"; //text injection for the true event
                     } else {
-                      var trueEventText = "the top scorer is a woman";
+                      var trueEventText = "the top scorer has even ID";
                     }
                 } else {
                    //if randomN is larger than stated belief, then use number lottery method to calculate payment
