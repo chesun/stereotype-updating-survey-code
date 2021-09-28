@@ -1,6 +1,8 @@
 //embed the information from the randomly drawn groups in the prestudy sample from 9/1/2021
 //Each row has 3 groups: a 50/50 gender group, a random gender group with random number of women and men, and a random ID group
 
+//NOTE: DO NOT USE IN CURRENT STATE. DOES NOT HAVE DATA EMBED FOR topoddhigher5050 and avgoddhigher5050
+
 //embed topmanhigher5050, dummy var for whether top scorer is a man in 50/50 gender group
 Qualtrics.SurveyEngine.setEmbeddedData("topmanhigher5050_1","0");
 Qualtrics.SurveyEngine.setEmbeddedData("topmanhigher5050_2","0");

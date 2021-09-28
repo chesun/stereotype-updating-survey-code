@@ -5,6 +5,8 @@ for (let i = 1; i <= 100; i++) {
     //let is only scoped to the immediate code block enclosed by {}
     var topmanhigher5050 = Qualtrics.SurveyEngine.getEmbeddedData('topmanhigher5050' + '_' + i.toString());
     var avgmanhigher5050 = Qualtrics.SurveyEngine.getEmbeddedData('avgmanhigher5050' + '_' + i.toString());
+    var topoddhigher5050 = Qualtrics.SurveyEngine.getEmbeddedData('topoddhigher5050' + '_' + i.toString());
+    var avgoddhigher5050 = Qualtrics.SurveyEngine.getEmbeddedData('avgoddhigher5050' + '_' + i.toString());
     var numman = Qualtrics.SurveyEngine.getEmbeddedData('numman' + '_' + i.toString());
     var numwoman = Qualtrics.SurveyEngine.getEmbeddedData('numwoman' + '_' + i.toString());
     var numodd = Qualtrics.SurveyEngine.getEmbeddedData('numodd' + '_' + i.toString());
@@ -16,6 +18,8 @@ for (let i = 1; i <= 100; i++) {
 
 Qualtrics.SurveyEngine.setEmbeddedData('topmanhigher5050', topmanhigher5050);
 Qualtrics.SurveyEngine.setEmbeddedData('avgmanhigher5050', avgmanhigher5050);
+Qualtrics.SurveyEngine.setEmbeddedData('topoddhigher5050', topoddhigher5050);
+Qualtrics.SurveyEngine.setEmbeddedData('avgoddhigher5050', avgoddhigher5050);
 Qualtrics.SurveyEngine.setEmbeddedData('numman', numman);
 Qualtrics.SurveyEngine.setEmbeddedData('numwoman', numwoman);
 Qualtrics.SurveyEngine.setEmbeddedData('numodd', numodd);
