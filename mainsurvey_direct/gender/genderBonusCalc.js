@@ -15,12 +15,12 @@ var baseFee = parseInt("${e://Field/baseFee}");
 //there are in total 12 questions that count for bonus including age fillers
 if (payQuestionNum<=4) {
   //text injection for the part number the selected question is from
-  var payPartNumInject = 1
+  var payPartNumInject = 1;
   //text injection for question number selected inside the part
-  var payQuestionNumInject = payQuestionNum
+  var payQuestionNumInject = payQuestionNum;
 } else {
-  var payPartNumInject = 2
-  var payQuestionNumInject = payQuestionNum - 4
+  var payPartNumInject = 2;
+  var payQuestionNumInject = payQuestionNum - 4;
 }
 
 
